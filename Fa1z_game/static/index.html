@@ -14,19 +14,13 @@
   }
   .light{ --bg:#f3f4f6;--card:#ffffff;--muted:#6b7280;--accent:#16a34a;--danger:#dc2626;--text:#0f172a; }
   *{box-sizing:border-box} html,body{height:100%;margin:0}
-  body{
-    background:linear-gradient(180deg,var(--bg),#0b1222 5%,var(--bg) 40%);
-    font-family:system-ui,Segoe UI,Roboto,Arial;color:var(--text);
-    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-    margin:0;
-  }
+  body{background:linear-gradient(180deg,var(--bg),#0b1222 5%,var(--bg) 40%);font-family:system-ui,Segoe UI,Roboto,Arial;color:var(--text);margin:0}
   .wrap{max-width:1100px;margin:auto;padding:12px}
-  header{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:6px 0 12px}
+  header{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:6px 0 12px;flex-wrap:wrap}
   .brand{display:flex;gap:10px;align-items:center}
   .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
   .brand h1{margin:0;font-size:var(--fs-h)}
-  .pill{display:inline-flex;align-items:center;gap:8px;background:color-mix(in oklab, var(--card) 90%, black 10%);
-        border:1px solid #00000014;padding:8px 10px;border-radius:999px;font-size:var(--fs-small)}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:color-mix(in oklab, var(--card) 90%, black 10%);border:1px solid #00000014;padding:8px 10px;border-radius:999px;font-size:var(--fs-small)}
   .panel{display:grid;grid-template-columns:1.6fr .9fr;gap:var(--gap);min-height:calc(100svh - 80px)}
   @media (max-width:900px){.panel{grid-template-columns:1fr;min-height:auto}}
   .card{background:color-mix(in oklab, var(--card) 90%, black 10%);border:1px solid #00000014;border-radius:var(--radius);box-shadow:0 10px 30px #00000026}
@@ -41,12 +35,9 @@
   .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   @media (max-width:560px){.choices{grid-template-columns:1fr}}
 
-  .btn{
-    border:1px solid #00000022;color:var(--text);border-radius:14px;
-    padding:16px;cursor:pointer;text-align:center;font-size:var(--fs-btn);
-    min-height:60px; outline:none; display:flex;align-items:center;justify-content:center;gap:10px;
-    position:relative; overflow:hidden; transition:transform .08s ease; user-select:none; -webkit-tap-highlight-color:transparent;
-  }
+  .btn{border:1px solid #00000022;color:var(--text);border-radius:14px;padding:16px;cursor:pointer;text-align:center;font-size:var(--fs-btn);
+       min-height:60px; outline:none; display:flex;align-items:center;justify-content:center;gap:10px; position:relative; overflow:hidden;
+       transition:transform .08s ease; user-select:none; -webkit-tap-highlight-color:transparent;}
   .btn b{font-weight:800} .btn:active{transform:scale(.985)} .btn:disabled{opacity:.7;filter:saturate(.7);cursor:not-allowed}
 
   .btn-a{background:#064e3b;border-color:#10b981;color:#eafff5}
@@ -59,21 +50,19 @@
   .light .btn.selected{box-shadow:0 0 0 3px #00000012 inset, 0 0 0 1px #00000026}
   .btn.correct{background:#065f46!important;border-color:#34d399!important;animation:pulse .5s ease 2;color:#eafff5}
   .btn.wrong{background:#7f1d1d!important;border-color:#ef4444!important;animation:shake .25s ease 2;color:#ffebeb}
-
   @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
   @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
 
   .logs{white-space:pre-wrap;background:color-mix(in oklab, var(--card) 75%, black 25%);border:1px dashed #94a3b840;padding:10px;border-radius:12px;font-size:var(--fs-small)}
   .join{position:fixed;inset:0;background:#020617cc;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
   .light .join{background:#00000033}
-  .dialog{width:min(480px,92vw);background:var(--card);border:1px solid #00000014;border-radius:18px;padding:18px}
-  .row{display:flex;gap:8px;margin-top:10px}
-  input[type=text]{flex:1;padding:13px 12px;border-radius:12px;border:1px solid #00000022;background:#0f172a;color:#e5e7eb;font-size:var(--fs-btn)}
-  .light input[type=text]{background:#ffffff;color:#111827}
+  .dialog{width:min(520px,92vw);background:var(--card);border:1px solid #00000014;border-radius:18px;padding:18px}
+  .row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  input[type=text], select{flex:1;padding:13px 12px;border-radius:12px;border:1px solid #00000022;background:#0f172a;color:#e5e7eb;font-size:var(--fs-btn)}
+  .light input[type=text], .light select{background:#ffffff;color:#111827}
   button{padding:12px 14px;border-radius:12px;border:1px solid #00000022;background:var(--card);color:var(--text);cursor:pointer;font-size:var(--fs-btn)}
   button.primary{background:#14532d;border-color:#16a34a;color:#eafff5}
   .theme{margin-inline-start:8px}
-
   .flash{position:fixed;inset-block-start:8px;inset-inline:0;display:flex;justify-content:center;pointer-events:none;animation:fadeout 1s ease forwards}
   .flash span{background:#14532d;border:1px solid #16a34a;color:#e5ffe9;padding:10px 14px;border-radius:999px;box-shadow:0 6px 16px #00000055}
   @keyframes fadeout{0%{opacity:1}100%{opacity:0}}
@@ -88,7 +77,7 @@
     <header>
       <div class="brand"><div class="dot"></div><h1>Trivia Online</h1></div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <div class="pill"><span⏱️</span><span style="opacity:.7">الوقت:</span> <b id="timer">—</b></div>
+        <div class="pill"><span>⏱️</span><span style="opacity:.7">الوقت:</span> <b id="timer">—</b></div>
         <div class="timer-circle" aria-hidden="true">
           <svg width="64" height="64">
             <circle cx="32" cy="32" r="28" stroke="#1f2937" stroke-width="6" fill="none"></circle>
@@ -104,10 +93,10 @@
       <section class="card main">
         <div class="title">
           <div class="badge" id="qmeta">سؤال —/—</div>
-          <div class="badge" style="opacity:.8">اختر الإجابة بالضغط على الزر</div>
+          <div class="badge" style="opacity:.8">اختر الإجابة بالضغط على الزر (أو A/B/C/D على الكيبورد)</div>
         </div>
         <div class="timerbar"><div id="timerfill" class="timerfill"></div></div>
-        <div id="qtext" class="q">اضغط "انضم" للبدء…</div>
+        <div id="qtext" class="q">اضغط "انضم" وحدّد الفئة ثم “بدء الجولة”.</div>
         <div class="choices" id="choices"></div>
         <div id="explain" class="logs" style="display:none;margin-top:10px"></div>
       </section>
@@ -118,6 +107,7 @@
         <h3 style="margin:14px 0 8px 0;font-size:var(--fs-h)">الأحداث</h3>
         <div id="log" class="logs"></div>
         <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <select id="category"></select>
           <button id="start" class="primary">بدء الجولة</button>
           <button id="clearlog">مسح السجل</button>
         </div>
@@ -129,16 +119,14 @@
   <div class="join" id="join">
     <div class="dialog">
       <h2 style="margin:0 0 10px 0;font-size:var(--fs-h)">أدخل اسمك وادخل اللعبة</h2>
-      <p style="margin:0 0 8px 0;color:var(--muted);font-size:var(--fs-small)">الاسم يظهر في لوحة الصدارة</p>
       <div class="row">
         <input id="name" type="text" placeholder="مثال: Faiz">
         <button id="joinbtn" class="primary">انضم</button>
       </div>
-      <p style="margin-top:10px;color:var(--muted);font-size:var(--fs-small)">بعد الانضمام، اضغط "بدء الجولة" من جهاز المشرف.</p>
+      <p style="margin-top:10px;color:#94a3b8;font-size:var(--fs-small)">بعد الانضمام، اختر الفئة واضغط "بدء الجولة".</p>
     </div>
   </div>
 
-  <!-- Socket.IO -->
   <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
   <script>
     const socket = io({ transports: ["websocket"] });
@@ -157,14 +145,14 @@
     const timerEl = document.getElementById('timer');
     const timerFill = document.getElementById('timerfill');
     const explainEl = document.getElementById('explain');
+    const categorySel = document.getElementById('category');
     const themeBtn = document.getElementById('theme');
 
     // مؤقت دائري
     const arc = document.getElementById('arc');
     const timerNum = document.getElementById('timerNum');
-    const CIRC = 2*Math.PI*28; // 176
 
-    // أصوات من مجلد static/sounds
+    // أصوات
     const snd = {
       start:  new Audio("/static/sounds/start.mp3"),
       correct:new Audio("/static/sounds/correct.mp3"),
@@ -175,27 +163,30 @@
     const log = (t)=>{ logEl.textContent += t + "\n"; logEl.scrollTop = logEl.scrollHeight; };
     clearBtn.onclick = ()=> logEl.textContent = '';
 
-    // الثيم
+    // ثيم
     const applyTheme = (t)=> document.body.classList.toggle('light', t === 'light');
-    const savedTheme = localStorage.getItem('theme');
-    applyTheme(savedTheme || 'dark');
+    applyTheme(localStorage.getItem('theme') || 'dark');
     themeBtn.onclick = ()=>{
       const now = document.body.classList.contains('light') ? 'dark' : 'light';
       applyTheme(now); localStorage.setItem('theme', now);
     };
 
-    // لوحة الصدارة (أفاتار أول حرف + تاج للأول)
+    // تحميل الفئات من السيرفر
+    fetch('/categories').then(r=>r.json()).then(arr=>{
+      categorySel.innerHTML = arr.map(o=>`<option value="${o.key}">${o.key} (${o.count})</option>`).join('');
+    }).catch(()=>{ categorySel.innerHTML = '<option value="general">general</option>'; });
+
+    // لوحة الصدارة
     function renderBoard(scores){
       if (!scores?.length){ boardEl.textContent = '—'; return; }
       boardEl.textContent = scores.map(([n,s],i)=>{
-        const initial = (n||'?').trim()[0]?.toUpperCase() || '?';
         const crown = i===0 ? ' 👑' : '';
-        return `${i+1}. [${initial}] ${n}${crown} — ${s}`;
+        return `${i+1}. ${n}${crown} — ${s}`;
       }).join('\n');
     }
 
-    // كونفيتي بسيط
-    function confetti(ms=1000, n=60){
+    // كونفيتي
+    function confetti(ms=900, n=50){
       const container = document.createElement('div');
       container.style.position='fixed';container.style.inset='0';container.style.pointerEvents='none';
       document.body.appendChild(container);
@@ -225,8 +216,12 @@
       snd.start.play().catch(()=>{});
     };
 
-    // بدء الجولة
-    startBtn.onclick = ()=> { socket.emit('start'); snd.start.play().catch(()=>{}); };
+    // بدء الجولة مع اختيار الفئة
+    startBtn.onclick = ()=>{
+      const cat = categorySel.value || 'general';
+      socket.emit('start', {category: cat});
+      snd.start.play().catch(()=>{});
+    };
 
     // نظام
     socket.on('system', d => {
@@ -234,21 +229,10 @@
       if (d.msg?.includes('انضم')) joinOverlay.style.display = 'none';
     });
 
-    // فلاش أعلى الصفحة
-    function flash(text){
-      const bar = document.createElement('div');
-      bar.className = 'flash';
-      bar.innerHTML = `<span>${text}</span>`;
-      document.body.appendChild(bar);
-      setTimeout(()=>bar.remove(), 1000);
-    }
-
-    // أول إجابة صحيحة
+    // أول إجابة صحيحة (قد تكون 1/2/3 نقاط)
     socket.on('correct_first', d => {
-      log(`🏆 أول إجابة صحيحة: ${d.player} (+${d.gain||1})`);
-      flash(`🏆 ${d.player} أول إجابة صحيحة!`);
-      confetti(800, 40);
-      snd.correct.play().catch(()=>{});
+      log(`🏆 إجابة صحيحة: ${d.player} (+${d.gain}) [الترتيب ${d.rank}]`);
+      if (d.rank === 1){ confetti(800, 40); snd.correct.play().catch(()=>{}); }
     });
 
     socket.on('leaderboard', d => renderBoard(d?.scores));
@@ -268,24 +252,15 @@
         const colorClass = { 'A': 'btn-a', 'B': 'btn-b', 'C': 'btn-c', 'D': 'btn-d' }[letter] || 'btn-a';
         btn.className = `btn ${colorClass}`; btn.dataset.letter = letter;
         btn.innerHTML = `<b>${letter}</b> — ${label}`;
-        btn.onclick = ()=>{
-          if (selectedLetter) return;
-          selectedLetter = letter;
-          Array.from(choices.children).forEach(b=>{
-            b.disabled = true;
-            if (b.dataset.letter === selectedLetter) b.classList.add('selected');
-          });
-          socket.emit('answer', {letter});
-          log(`➡️ أرسلت إجابة: ${letter}`);
-        };
+        btn.onclick = ()=> choose(letter);
         choices.appendChild(btn);
       });
 
+      // مؤقت واجهة
       const total = Number(d.time ?? 12);
       let left = total;
-      timerEl.textContent = left;
+      timerEl.textContent = left; timerNum.textContent = left;
       timerFill.style.width = '100%';
-      timerNum.textContent = left;
       arc.style.strokeDasharray = `176`; arc.style.strokeDashoffset = '0';
       countdownInt = setInterval(()=>{
         left -= 1;
@@ -296,37 +271,47 @@
         arc.style.strokeDashoffset = `${176*(1-frac)}`;
         if (left < 0){
           clearInterval(countdownInt);
-          // لو ما صار reveal مباشرة
           if (!Array.from(choices.children).some(b=>b.classList.contains('correct'))){
-            log('⏰ انتهى الوقت!');
-            snd.timeup.play().catch(()=>{});
+            log('⏰ انتهى الوقت!'); snd.timeup.play().catch(()=>{});
           }
         }
       }, 1000);
     });
 
-    // إظهار الإجابة + الشرح
+    // اختيار الإجابة (مع منع التغيير)
+    function choose(letter){
+      if (selectedLetter) return;
+      selectedLetter = letter;
+      Array.from(choices.children).forEach(b=>{
+        b.disabled = true;
+        if (b.dataset.letter === selectedLetter) b.classList.add('selected');
+      });
+      socket.emit('answer', {letter});
+      log(`➡️ أرسلت إجابة: ${letter}`);
+    }
+
+    // اختصارات الكيبورد: A/B/C/D
+    window.addEventListener('keydown', (e)=>{
+      const k = (e.key || '').toUpperCase();
+      if (['A','B','C','D'].includes(k)) choose(k);
+    });
+
+    // Reveal
     socket.on('reveal', d=>{
       const answer = (d.answer || '').toUpperCase();
       Array.from(choices.children).forEach(b=>{
         const l = b.dataset.letter;
-        if (l === answer) {
-          b.classList.remove('selected'); b.classList.add('correct');
-        } else if (selectedLetter && l === selectedLetter && l !== answer) {
-          b.classList.remove('selected'); b.classList.add('wrong');
-        }
+        if (l === answer) { b.classList.remove('selected'); b.classList.add('correct'); }
+        else if (selectedLetter && l === selectedLetter && l !== answer) { b.classList.remove('selected'); b.classList.add('wrong'); }
       });
-      if (d.explain){
-        explainEl.style.display='block';
-        explainEl.textContent = 'ℹ️ شرح: ' + d.explain;
-      }
+      if (d.explain){ explainEl.style.display='block'; explainEl.textContent = 'ℹ️ شرح: ' + d.explain; }
       log(`✅ الإجابة الصحيحة: ${answer}`);
       if (selectedLetter === answer){ snd.correct.play().catch(()=>{}); }
       else { snd.wrong.play().catch(()=>{}); }
     });
 
     socket.on('game_over', d=>{
-      log('🎉 انتهت اللعبة!');
+      log('🎉 انتهت الجولة! الفائزون: ' + (d.winners?.join(', ') || '—'));
       confetti(1200, 80);
     });
   </script>
