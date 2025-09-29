@@ -1,0 +1,106 @@
+{
+  "general": [
+    {
+      "q": "مثال سؤال عام",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "A",
+      "explain": "توضيح."
+    }
+  ],
+  "sports": [
+    {
+      "q": "مثال سؤال رياضي",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "B",
+      "explain": "توضيح."
+    }
+  ],
+  "history": [
+    {
+      "q": "مثال سؤال تاريخ",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "C",
+      "explain": "توضيح."
+    }
+  ],
+  "science": [
+    {
+      "q": "مثال سؤال علمي",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "D",
+      "explain": "توضيح."
+    }
+  ],
+  "tech": [
+    {
+      "q": "مثال سؤال تقني",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "A",
+      "explain": "توضيح."
+    }
+  ],
+  "geography": [
+    {
+      "q": "مثال سؤال جغرافي",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "B",
+      "explain": "توضيح."
+    }
+  ],
+  "culture": [
+    {
+      "q": "مثال سؤال ثقافي",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "C",
+      "explain": "توضيح."
+    }
+  ],
+  "islamic": [
+    {
+      "q": "مثال سؤال إسلامي",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "D",
+      "explain": "توضيح."
+    }
+  ]
+}
