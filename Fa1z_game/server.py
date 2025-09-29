@@ -1,19 +1,18 @@
 import os, json, random, asyncio
 from typing import Dict, List
+
 import socketio
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 import uvicorn
 
-# تحديد مسار ملف الأسئلة
+# ===== تحميل الأسئلة من ملف JSON =====
 QUESTIONS_FILE = os.path.join(os.path.dirname(__file__), "static", "questions.json")
-
-# تحميل الأسئلة من JSON
 with open(QUESTIONS_FILE, "r", encoding="utf-8") as f:
     QUESTIONS = json.load(f)
 
-# ========= إعداد Socket.IO + FastAPI =========
+# ===== إعداد Socket.IO + FastAPI =====
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -22,47 +21,13 @@ asgi_app = socketio.ASGIApp(sio, other_asgi_app=app)
 @app.get("/")
 async def root():
     return RedirectResponse(url="/static/index.html")
+@app.get("/categories")
+async def categories():
+    # يرجّع: [{"key":"general","count":12}, ...]
+    return JSONResponse(
+        [{"key": k, "count": len(v)} for k, v in QUESTIONS.items()]
+    )
 
-# ========= إعدادات عامة =========
-QUESTION_TIME = 12     # مدة السؤال بالثواني
-PAUSE_BETWEEN = 3      # استراحة بين الأسئلة
-QUESTIONS_PATH = os.path.join("static", "questions.json")
-
-# ========= تحميل الأسئلة من ملف JSON =========
-def load_questions() -> Dict[str, List[dict]]:
-    """
-    بنية الملف:
-    {
-      "general": [
-        {"q": "...", "choices": ["A) ...","B) ...","C) ...","D) ..."], "answer":"B", "explain":"..."},
-        ...
-      ],
-      "sports": [ ... ]
-    }
-    """
-    try:
-        with open(QUESTIONS_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        # تنظيف الإجابات
-        for arr in data.values():
-            for it in arr:
-                it["answer"] = (it.get("answer") or "").strip().upper()
-        return data
-    except Exception as e:
-        print("Failed to load questions.json:", e)
-        # fallback: فئة وحيدة افتراضية
-        return {
-            "general": [
-                {
-                    "q": "ما هي عاصمة اليابان؟",
-                    "choices": ["A) أوساكا", "B) طوكيو", "C) كيوتو", "D) كوبي"],
-                    "answer": "B",
-                    "explain": "طوكيو العاصمة منذ 1869."
-                }
-            ]
-        }
-
-QUEST_BANK = load_questions()
 
 @app.get("/categories")
 async def categories():
